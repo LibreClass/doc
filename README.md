@@ -1,6 +1,6 @@
-# LibreClass Community Edition - Documentação
+# LibreClass - Documentação
 
-> Este projeto contém a documentação do LibreClass CE.
+> Este projeto contém a documentação do software LibreClass.
 
 `/database`: Documentação relativa ao banco de dados.
 
