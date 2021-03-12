@@ -1,11 +1,8 @@
--- Adminer 4.7.7 MySQL dump
-
 SET NAMES utf8;
 SET time_zone = '+00:00';
 SET foreign_key_checks = 0;
 SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
 
-DROP TABLE IF EXISTS `attends`;
 CREATE TABLE `attends` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `unit_id` int unsigned NOT NULL COMMENT 'Id da unidade que o usuário cursa',
@@ -22,7 +19,6 @@ CREATE TABLE `attends` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-DROP TABLE IF EXISTS `attests`;
 CREATE TABLE `attests` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `institution_id` int unsigned NOT NULL,
@@ -42,7 +38,6 @@ CREATE TABLE `attests` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-DROP TABLE IF EXISTS `binds`;
 CREATE TABLE `binds` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int unsigned NOT NULL,
@@ -60,7 +55,6 @@ CREATE TABLE `binds` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-DROP TABLE IF EXISTS `cities`;
 CREATE TABLE `cities` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(120) NOT NULL COMMENT 'Nome da cidade',
@@ -74,12 +68,11 @@ CREATE TABLE `cities` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-DROP TABLE IF EXISTS `classes`;
 CREATE TABLE `classes` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `period_id` int unsigned NOT NULL COMMENT 'periodo da turma',
   `name` varchar(50) DEFAULT NULL,
-  `school_year` int NOT NULL COMMENT 'Ano letivo',
+  `school_year` int NOT NULL DEFAULT '2021' COMMENT 'Ano letivo',
   `class` varchar(50) DEFAULT NULL,
   `status` char(1) NOT NULL DEFAULT 'E',
   `created_at` timestamp NULL DEFAULT NULL,
@@ -91,7 +84,6 @@ CREATE TABLE `classes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-DROP TABLE IF EXISTS `controllers`;
 CREATE TABLE `controllers` (
   `controller_id` int unsigned NOT NULL COMMENT 'Id do usuário controlador',
   `subject_id` int unsigned NOT NULL COMMENT 'Id do usuário controlado',
@@ -105,7 +97,6 @@ CREATE TABLE `controllers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-DROP TABLE IF EXISTS `countries`;
 CREATE TABLE `countries` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(60) NOT NULL COMMENT 'Nome do país',
@@ -116,7 +107,6 @@ CREATE TABLE `countries` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-DROP TABLE IF EXISTS `courses`;
 CREATE TABLE `courses` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `institution_id` int unsigned NOT NULL COMMENT 'Id da instituição à que o curso está relacionado',
@@ -138,7 +128,6 @@ CREATE TABLE `courses` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-DROP TABLE IF EXISTS `descriptive_exams`;
 CREATE TABLE `descriptive_exams` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `attend_id` int unsigned NOT NULL,
@@ -158,7 +147,6 @@ CREATE TABLE `descriptive_exams` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
-DROP TABLE IF EXISTS `disciplines`;
 CREATE TABLE `disciplines` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `period_id` int unsigned DEFAULT NULL,
@@ -174,7 +162,6 @@ CREATE TABLE `disciplines` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-DROP TABLE IF EXISTS `exams`;
 CREATE TABLE `exams` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `unit_id` int unsigned NOT NULL,
@@ -194,7 +181,6 @@ CREATE TABLE `exams` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-DROP TABLE IF EXISTS `exams_values`;
 CREATE TABLE `exams_values` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `attend_id` int unsigned NOT NULL COMMENT 'Id do relacionamento "Cursa"',
@@ -213,7 +199,6 @@ CREATE TABLE `exams_values` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-DROP TABLE IF EXISTS `final_exams`;
 CREATE TABLE `final_exams` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `offer_id` int unsigned NOT NULL,
@@ -232,7 +217,6 @@ CREATE TABLE `final_exams` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-DROP TABLE IF EXISTS `frequencies`;
 CREATE TABLE `frequencies` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `attend_id` int unsigned NOT NULL COMMENT 'Id do relacionamento "cursa"',
@@ -251,7 +235,6 @@ CREATE TABLE `frequencies` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-DROP TABLE IF EXISTS `lectures`;
 CREATE TABLE `lectures` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int unsigned NOT NULL COMMENT 'Id do professor que leciona a disciplina',
@@ -270,7 +253,6 @@ CREATE TABLE `lectures` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-DROP TABLE IF EXISTS `lessons`;
 CREATE TABLE `lessons` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `unit_id` int unsigned NOT NULL COMMENT 'Id da unidade à que a aula está relacionada',
@@ -297,7 +279,6 @@ CREATE TABLE `lessons` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-DROP TABLE IF EXISTS `logs`;
 CREATE TABLE `logs` (
   `id` bigint unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int NOT NULL,
@@ -308,7 +289,6 @@ CREATE TABLE `logs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 
-DROP TABLE IF EXISTS `offers`;
 CREATE TABLE `offers` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `offer_id` int unsigned DEFAULT NULL COMMENT 'Auto relacionamento master/slave',
@@ -334,7 +314,6 @@ CREATE TABLE `offers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-DROP TABLE IF EXISTS `periods`;
 CREATE TABLE `periods` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `course_id` int unsigned NOT NULL,
@@ -350,7 +329,6 @@ CREATE TABLE `periods` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-DROP TABLE IF EXISTS `relationships`;
 CREATE TABLE `relationships` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int unsigned NOT NULL COMMENT 'Id do usuário',
@@ -369,7 +347,6 @@ CREATE TABLE `relationships` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-DROP TABLE IF EXISTS `states`;
 CREATE TABLE `states` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(75) NOT NULL,
@@ -384,7 +361,6 @@ CREATE TABLE `states` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-DROP TABLE IF EXISTS `suggestions`;
 CREATE TABLE `suggestions` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int unsigned DEFAULT NULL,
@@ -392,6 +368,7 @@ CREATE TABLE `suggestions` (
   `value` char(1) NOT NULL DEFAULT 'S' COMMENT 'S-sugestões; B-bugs',
   `description` text NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `idUser` (`user_id`),
   CONSTRAINT `suggestions_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE SET NULL,
@@ -399,7 +376,6 @@ CREATE TABLE `suggestions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-DROP TABLE IF EXISTS `units`;
 CREATE TABLE `units` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `offer_id` int unsigned NOT NULL,
@@ -415,9 +391,8 @@ CREATE TABLE `units` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
-DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
-  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `email` varchar(50) DEFAULT NULL COMMENT 'Email do usuário',
   `password` varchar(60) DEFAULT NULL COMMENT 'senha',
   `remember_token` varchar(100) DEFAULT NULL,
@@ -443,4 +418,4 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
--- 2021-02-22 18:01:16
+SET foreign_key_checks = 1;
