@@ -16,7 +16,7 @@ CREATE TABLE `attends` (
   KEY `aluno` (`user_id`),
   CONSTRAINT `attends_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   CONSTRAINT `attends_ibfk_3` FOREIGN KEY (`unit_id`) REFERENCES `units` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 
 CREATE TABLE `attests` (
@@ -35,7 +35,7 @@ CREATE TABLE `attests` (
   CONSTRAINT `attests_ibfk_4` FOREIGN KEY (`student_id`) REFERENCES `users` (`id`),
   CONSTRAINT `attests_ibfk_5` FOREIGN KEY (`institution_id`) REFERENCES `users` (`id`),
   CONSTRAINT `attests_ibfk_6` FOREIGN KEY (`student_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 
 CREATE TABLE `binds` (
@@ -52,7 +52,7 @@ CREATE TABLE `binds` (
   CONSTRAINT `binds_ibfk_2` FOREIGN KEY (`discipline_id`) REFERENCES `disciplines` (`id`),
   CONSTRAINT `binds_ibfk_3` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   CONSTRAINT `binds_ibfk_4` FOREIGN KEY (`discipline_id`) REFERENCES `disciplines` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 
 CREATE TABLE `cities` (
@@ -65,7 +65,7 @@ CREATE TABLE `cities` (
   KEY `fk_cidade_estado` (`state_id`),
   CONSTRAINT `cities_ibfk_1` FOREIGN KEY (`state_id`) REFERENCES `states` (`id`),
   CONSTRAINT `cities_ibfk_2` FOREIGN KEY (`state_id`) REFERENCES `states` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 
 CREATE TABLE `classes` (
@@ -81,7 +81,7 @@ CREATE TABLE `classes` (
   KEY `idPeriod` (`period_id`),
   CONSTRAINT `classes_ibfk_1` FOREIGN KEY (`period_id`) REFERENCES `periods` (`id`),
   CONSTRAINT `classes_ibfk_2` FOREIGN KEY (`period_id`) REFERENCES `periods` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 
 CREATE TABLE `controllers` (
@@ -94,7 +94,7 @@ CREATE TABLE `controllers` (
   KEY `idController` (`controller_id`),
   CONSTRAINT `controllers_ibfk_1` FOREIGN KEY (`controller_id`) REFERENCES `users` (`id`),
   CONSTRAINT `controllers_ibfk_2` FOREIGN KEY (`subject_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 
 CREATE TABLE `countries` (
@@ -104,7 +104,7 @@ CREATE TABLE `countries` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 
 CREATE TABLE `courses` (
@@ -125,7 +125,7 @@ CREATE TABLE `courses` (
   KEY `idInstitution` (`institution_id`),
   CONSTRAINT `courses_ibfk_2` FOREIGN KEY (`institution_id`) REFERENCES `users` (`id`),
   CONSTRAINT `courses_ibfk_3` FOREIGN KEY (`institution_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 
 CREATE TABLE `descriptive_exams` (
@@ -159,7 +159,7 @@ CREATE TABLE `disciplines` (
   KEY `fk_Disciplines_Periods1_idx` (`period_id`),
   CONSTRAINT `disciplines_ibfk_1` FOREIGN KEY (`period_id`) REFERENCES `periods` (`id`),
   CONSTRAINT `disciplines_ibfk_2` FOREIGN KEY (`period_id`) REFERENCES `periods` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 
 CREATE TABLE `exams` (
@@ -178,7 +178,7 @@ CREATE TABLE `exams` (
   KEY `idUnit` (`unit_id`),
   CONSTRAINT `exams_ibfk_2` FOREIGN KEY (`unit_id`) REFERENCES `units` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `exams_ibfk_3` FOREIGN KEY (`unit_id`) REFERENCES `units` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 
 CREATE TABLE `exams_values` (
@@ -196,7 +196,7 @@ CREATE TABLE `exams_values` (
   CONSTRAINT `exams_values_ibfk_5` FOREIGN KEY (`exam_id`) REFERENCES `exams` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `exams_values_ibfk_6` FOREIGN KEY (`attend_id`) REFERENCES `attends` (`id`),
   CONSTRAINT `exams_values_ibfk_7` FOREIGN KEY (`exam_id`) REFERENCES `exams` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 
 CREATE TABLE `final_exams` (
@@ -214,7 +214,7 @@ CREATE TABLE `final_exams` (
   CONSTRAINT `final_exams_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   CONSTRAINT `final_exams_ibfk_3` FOREIGN KEY (`offer_id`) REFERENCES `offers` (`id`),
   CONSTRAINT `final_exams_ibfk_4` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 
 CREATE TABLE `frequencies` (
@@ -232,7 +232,7 @@ CREATE TABLE `frequencies` (
   CONSTRAINT `frequencies_ibfk_5` FOREIGN KEY (`attend_id`) REFERENCES `attends` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `frequencies_ibfk_6` FOREIGN KEY (`attend_id`) REFERENCES `attends` (`id`),
   CONSTRAINT `frequencies_ibfk_7` FOREIGN KEY (`lesson_id`) REFERENCES `lessons` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 
 CREATE TABLE `lectures` (
@@ -250,7 +250,7 @@ CREATE TABLE `lectures` (
   CONSTRAINT `lectures_ibfk_2` FOREIGN KEY (`offer_id`) REFERENCES `offers` (`id`),
   CONSTRAINT `lectures_ibfk_3` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   CONSTRAINT `lectures_ibfk_4` FOREIGN KEY (`offer_id`) REFERENCES `offers` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 
 CREATE TABLE `lessons` (
@@ -276,7 +276,7 @@ CREATE TABLE `lessons` (
   KEY `idUnit` (`unit_id`),
   CONSTRAINT `lessons_ibfk_2` FOREIGN KEY (`unit_id`) REFERENCES `units` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `lessons_ibfk_3` FOREIGN KEY (`unit_id`) REFERENCES `units` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 
 CREATE TABLE `logs` (
@@ -286,7 +286,7 @@ CREATE TABLE `logs` (
   `msg` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `data` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_bin;
 
 
 CREATE TABLE `offers` (
@@ -311,7 +311,7 @@ CREATE TABLE `offers` (
   CONSTRAINT `offers_ibfk_3` FOREIGN KEY (`class_id`) REFERENCES `classes` (`id`),
   CONSTRAINT `offers_ibfk_4` FOREIGN KEY (`class_id`) REFERENCES `classes` (`id`),
   CONSTRAINT `offers_ibfk_5` FOREIGN KEY (`discipline_id`) REFERENCES `disciplines` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 
 CREATE TABLE `periods` (
@@ -320,13 +320,14 @@ CREATE TABLE `periods` (
   `name` varchar(50) DEFAULT NULL,
   `status` char(1) NOT NULL DEFAULT 'E',
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `deleted_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_Periods_Courses1_idx` (`course_id`),
   CONSTRAINT `periods_ibfk_1` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`),
   CONSTRAINT `periods_ibfk_2` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`),
   CONSTRAINT `periods_ibfk_3` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 
 CREATE TABLE `relationships` (
@@ -344,7 +345,7 @@ CREATE TABLE `relationships` (
   KEY `user_id` (`user_id`),
   CONSTRAINT `relationships_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   CONSTRAINT `relationships_ibfk_2` FOREIGN KEY (`friend_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 
 CREATE TABLE `states` (
@@ -358,22 +359,26 @@ CREATE TABLE `states` (
   KEY `fk_estado_pais` (`country_id`),
   CONSTRAINT `states_ibfk_1` FOREIGN KEY (`country_id`) REFERENCES `countries` (`id`),
   CONSTRAINT `states_ibfk_2` FOREIGN KEY (`country_id`) REFERENCES `countries` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 
 CREATE TABLE `suggestions` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `user_id` int unsigned DEFAULT NULL,
+  `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `emailUser` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `title` varchar(255) NOT NULL,
   `value` char(1) NOT NULL DEFAULT 'S' COMMENT 'S-sugestões; B-bugs',
   `description` text NOT NULL,
+  `textError` text CHARACTER SET utf8 COLLATE utf8_general_ci,
+  `link` text CHARACTER SET utf8 COLLATE utf8_general_ci,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `idUser` (`user_id`),
   CONSTRAINT `suggestions_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE SET NULL,
   CONSTRAINT `suggestions_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 
 CREATE TABLE `units` (
@@ -392,7 +397,7 @@ CREATE TABLE `units` (
 
 
 CREATE TABLE `users` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
   `email` varchar(50) DEFAULT NULL COMMENT 'Email do usuário',
   `password` varchar(60) DEFAULT NULL COMMENT 'senha',
   `remember_token` varchar(100) DEFAULT NULL,
@@ -415,7 +420,5 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`),
   KEY `idCity` (`city_id`),
   CONSTRAINT `users_ibfk_1` FOREIGN KEY (`city_id`) REFERENCES `cities` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
-
-SET foreign_key_checks = 1;
